@@ -8,7 +8,7 @@
         }
 
         .app-toolbar-container {
-            /*display: flex;*/
+            display: flex;
             background-color: gray
         }
 
@@ -19,7 +19,7 @@
         .seleccion {
             --app-toolbar-item-item: {
                 color: yellow;
-            }
+            };
         }
         </style>
         <div class="app-toolbar-container">
@@ -45,9 +45,17 @@
         },
         _clicked: function(e) {
             var model = e.model;
-            model.set('tool.isSelected', true);
-            //model.set('tool.isSelected', !model.isSelected);
-            //this.notifyPath('tools.' + model.index + '.isSelected', true);
+            if (this.multipleSelection) {
+                model.set('tool.isSelected', true);
+            } else {
+                console.log('multipleSelection false');
+                this.tools.forEach((tool, index) => {
+                    tool.isSelected = false;
+                    this.notifyPath('tools.' + index + '.isSelected', false);
+                });
+                model.set('tool.isSelected', true);
+            }
+
         },
         isSelected: function(item) {
             console.log(item);

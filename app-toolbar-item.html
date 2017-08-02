@@ -3,14 +3,10 @@
 <dom-module id="app-toolbar-item">
     <template>
         <style include="app-toolbar-item-shared-style slate-font-awesome">
-
-        :host([is-selected]) {
-           --app-toolbar-item-item: {
-                background-color: red;
-                color: yellow;
-            }
+        :host{
+            display: block;
         }
-
+        
         .app-toolbar-item-container {
             padding: 8px;
             @apply(--app-toolbar-item-container)
