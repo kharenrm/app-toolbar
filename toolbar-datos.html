@@ -1,0 +1,29 @@
+<link rel="import" href="./bower_components/polymer/polymer.html">
+<link rel="import" href="./app-toolbar.html">
+<dom-module id="toolbar-datos">
+    <template>
+        <style include="toolbar-datos-shared-style"></style>
+        <div class="container">
+            <app-toolbar tools="{{items}}"></app-toolbar>
+        </div>
+    </template>
+    <script>
+    Polymer({
+        is: 'toolbar-datos',
+        properties: {
+            items: {
+                type: Array,
+                value: function() {
+                    return [
+                        { text: 'Bug', icon: 'fa fa-bug fa-2x', imageUrl: '', imageAlt: 'Bug', isSelected: false },
+                        { text: 'Child', icon: 'fa fa-child fa-2x', imageUrl: '', imageAlt: 'Child', isSelected: true },
+                        { text: 'Gift', icon: 'fa fa-gift fa-2x', imageUrl: '', imageAlt: 'Gift', isSelected: false },
+                        { text: 'Leaf', icon: 'fa fa-leaf fa-2x', imageUrl: '', imageAlt: 'Leaf', isSelected: false },
+                        { text: 'Star', icon: 'fa fa-star fa-2x', imageUrl: '', imageAlt: 'Star', isSelected: false }
+                    ];
+                }
+            }
+        }
+    });
+    </script>
+</dom-module>

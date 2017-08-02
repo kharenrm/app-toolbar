@@ -1,0 +1,58 @@
+<link rel="import" href="./bower_components/polymer/polymer.html">
+<link rel="import" href="./app-toolbar-item.html">
+<dom-module id="app-toolbar">
+    <template>
+        <style include="app-toolbar-shared-style">
+         :host {
+            display: block;
+        }
+
+        .app-toolbar-container {
+            /*display: flex;*/
+            background-color: gray
+        }
+
+        .tool {
+            margin: 8px;
+        }
+
+        .seleccion {
+            --app-toolbar-item-item: {
+                color: yellow;
+            }
+        }
+        </style>
+        <div class="app-toolbar-container">
+            <template is="dom-repeat" items="{{tools}}" as="tool">
+                <app-toolbar-item class$="tool [[isSelected(tool.isSelected)]]" on-tap="_clicked" text="[[tool.text]]" icon="[[tool.icon]]" image-url="[[tool.imageUrl]]" image-alt="[[tool.imageAlt]]"></app-toolbar-item>
+            </template>
+        </div>
+    </template>
+    <script>
+    Polymer({
+        is: 'app-toolbar',
+        properties: {
+            tools: {
+                type: Array,
+                value: function() {
+                    return [];
+                }
+            },
+            multipleSelection: {
+                type: Boolean,
+                value: false
+            }
+        },
+        _clicked: function(e) {
+            var model = e.model;
+            model.set('tool.isSelected', true);
+            //model.set('tool.isSelected', !model.isSelected);
+            //this.notifyPath('tools.' + model.index + '.isSelected', true);
+        },
+        isSelected: function(item) {
+            console.log(item);
+            return item ? 'seleccion' : '';
+        }
+    });
+    </script>
+</dom-module>

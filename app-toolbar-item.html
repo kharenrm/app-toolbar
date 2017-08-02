@@ -1,0 +1,59 @@
+<link rel="import" href="./bower_components/polymer/polymer.html">
+<link rel="import" href="./bower_components/slate-font-awesome/slate-font-awesome.html">
+<dom-module id="app-toolbar-item">
+    <template>
+        <style include="app-toolbar-item-shared-style slate-font-awesome">
+
+        :host([is-selected]) {
+           --app-toolbar-item-item: {
+                background-color: red;
+                color: yellow;
+            }
+        }
+
+        .app-toolbar-item-container {
+            padding: 8px;
+            @apply(--app-toolbar-item-container)
+        }
+
+        .item {
+            color: white;
+            text-decoration: none;
+            @apply(--app-toolbar-item-item)
+        }
+
+        .texto {
+            font-family: sans-serif;
+        }
+        </style>
+        <div class="app-toolbar-item-container">
+            <a class="item texto" href="#">
+            <i class$="[[icon]]" aria-hidden="true"></i>
+            [[text]]
+            </a>
+        </div>
+    </template>
+    <script>
+    Polymer({
+        is: 'app-toolbar-item',
+        properties: {
+            text: {
+                type: String,
+                value: ''
+            },
+            icon: {
+                type: String,
+                value: ''
+            },
+            imageUrl: {
+                type: String,
+                value: ''
+            },
+            imageAlt: {
+                type: String,
+                value: ''
+            }
+        }
+    });
+    </script>
+</dom-module>
